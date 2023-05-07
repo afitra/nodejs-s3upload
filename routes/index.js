@@ -1,31 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const multer  = require('multer')
-let bucketUpload = require("../helpers/bucketUpload")
-
-
-
-const storage = multer.memoryStorage({
-  destination: function (req, file, cb) {
-    cb(null, '')
-  }
-})
-// const upload = multer({ storage: multer.memoryStorage() })
-const upload = multer({ storage });
-
+var uploadController = require("../controller/index")
+const upload = require('../helpers/uploadV2');
 
 /* GET home page. */
-router.post('/upload',  upload.single('uploaded_file'),   async  (req, res, next)=> {
- try {
-   var product =   await bucketUpload(req.file)
-   
-   res.status(200).send(product)
-  
- } catch (error) {
-  res.send(error.message)
- }
-  // ⛔️ Setting headers after the response has been sent
- 
-});
+router.post('/upload',  upload.single('uploaded_file'),  uploadController.uploadFile );
 
 module.exports = router;
