@@ -1,6 +1,5 @@
 var  { Upload } = require("@aws-sdk/lib-storage");
-var  { S3Client, S3,AbortMultipartUploadCommand,PutObjectCommand, AwsClient } =require ("@aws-sdk/client-s3");
-const multerS3 = require('multer-s3');
+var  { S3Client } =require ("@aws-sdk/client-s3");
 
 module.exports=  async  (file)=>{
  
