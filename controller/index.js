@@ -10,6 +10,14 @@ class beritaController {
             console.log(error.message);
         }
     }
+    static  uploadMulti(req, res, next) {
+        try {
+            res.json(req.files);
+            
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
 }
 
